@@ -1,0 +1,172 @@
+{% load static %}
+<!doctype html>
+<html lang = "ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Can Graduate</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css.css' %}">
+	
+</head>
+<body class='body_container'>
+    <header class='header'>
+        <div class='header_div'>
+            <div class="header_logo_div">
+                <a href='http://127.0.0.1:8000/canGraduate/'><span class='header_logo'>UOS_INFO <span class='header_beta'>beta</span></span></a>
+            </div>
+            <div class="header_navi_div">
+                <span class='header_navi_span'><a href='canI'>졸업확인하기</a></span>
+            </div>
+        </div> 
+    </header>
+    <main class='result_main'>
+        <div class="result_main_div">
+            <div class="result_notice_div">
+                <span class="result_notice_title">
+                    * 안 내 사 항
+                </span>
+                <div class="result_notice_content_div">
+                    <span class="result_notice_content">
+                        해당 결과는 서울시립대학교의 공식적인 졸업예비사정 결과가 아닙니다.<br>
+                        해당 결과는 서울시립대학교 홈페이지에서 확인할 수 있는 졸업요건과 각 학부(과)의 졸업요건을 수기로 반영하였기 때문에,<br>
+                        최신의 결과를 반영하지 않을 수 있습니다.<br>
+                        보다 확실한 정보는 자신이 속한 학부(과) 사무실을 통해 확인하시길 바랍니다.
+                    </span>
+                </div>
+            </div>
+            <div class="result_each">
+                <span class='result_each_title'>서울시립대학교 졸업요건 관련</span><hr>
+                {% if total_score_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ total_score }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ total_score }}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if total_grade_avg_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ total_grade_avg }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ total_grade_avg }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="result_each">
+                <span class='result_each_title'>학부(과) 졸업요건 관련</span><hr>
+                {% if major.practice_course_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ major.practice_course }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ major.practice_course }}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if major.selective_major_score_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ major.selective_major_score }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ major.selective_major_score }}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if major.haveTo_non_major_a_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ major.haveTo_non_major_a }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ major.haveTo_non_major_a }}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if major.haveTo_non_major_b_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ major.haveTo_non_major_b }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ major.haveTo_non_major_b }}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if major.haveTo_non_major_c_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ major.haveTo_non_major_c }}
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ major.haveTo_non_major_c }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="result_each">
+                <span class='result_each_title'>공인영어성적관련</span><hr>
+                {% if english_result == 1 %}
+                    <div class="result_pass_div">
+                        <span class="result_pass">
+                            {{ english }}
+                        </span>
+                    </div>
+                {% elif english_result == 2 %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ english }}
+                        </span>
+                    </div>
+                    <img src="{% static 'img/uos_english_standard.png' %}" class='english_img' alt="">
+                {% else %}
+                    <div class="result_fail_div">
+                        <span class="result_fail">
+                            {{ english }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer_div">
+            <span class="footer_content">
+                Copyright @2018 All rights reserved | This page made by 문범우<br>
+                해당사이트의 모든 저작권은 제작자에게 있습니다.<br>
+                사이트에 대한 문의나 건의사항은 하단 메일을 통해 연락주시길 바랍니다.<br>
+            </span><br>
+            <span class='footer_etc'>
+                BLOG: <a href="https://doorbw.tistory.com" target="_blank">doorbw.tistory.com</a><br>
+                E-MAIL: <a href='mailto:doorbw@outlook.com'>doorbw@outlook.com</a>
+            </span>
+        </div>
+    </footer>
+</body>

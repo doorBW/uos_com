@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang = "ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Can Graduate</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css.css' %}">
+	
+</head>
+<body class='body_container'>
+    <header class='header'>
+        <div class='header_div'>
+            <div class="header_logo_div">
+                <a href='http://127.0.0.1:8000/canGraduate/'><span class='header_logo'>UOS_INFO <span class='header_beta'>beta</span></span></a>
+            </div>
+            <div class="header_navi_div">
+                <span class='header_navi_span'><a href='canI'>졸업확인하기</a></span>
+            </div>
+        </div> 
+    </header>
+    <main class='main'>
+        <div class="main_div">
+            <div class="notice_div">
+                <hr><hr>
+                <div class='notice_each'>
+                    <span class='notice_title'>오류가 발생하였습니다 :-(</span>
+                    <p class='notice_content'>잘못된 접근이나, 서버에서의 오류가 발생하였습니다.<br>
+                        지속적으로 같은 문제가 발생시, 하단의 메일로 연락주시면 빠른시일내에 수정하겠습니다.
+                        <a href='http://127.0.0.1:8000' class='to_main_btn'>메인화면으로</a>
+                    </p>
+                </div>
+                <hr><hr>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer_div">
+            <span class="footer_content">
+                Copyright @2018 All rights reserved | This page made by 문범우<br>
+                해당사이트의 모든 저작권은 제작자에게 있습니다.<br>
+                사이트에 대한 문의나 건의사항은 하단 메일을 통해 연락주시길 바랍니다.<br>
+            </span><br>
+            <span class='footer_etc'>
+                BLOG: <a href="https://doorbw.tistory.com" target="_blank">doorbw.tistory.com</a><br>
+                E-MAIL: <a href='mailto:doorbw@outlook.com'>doorbw@outlook.com</a>
+            </span>
+        </div>
+    </footer>
+</body>

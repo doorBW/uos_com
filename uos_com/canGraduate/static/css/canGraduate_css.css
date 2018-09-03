@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
+/* font-family: 'Do Hyeon', sans-serif;
+font-family: 'Sunflower', sans-serif; */
+
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color:#0404B4
+}
+
+
+.body_container{
+    margin-left:5%;
+    margin-right:5%;
+    margin-bottom:5%;
+}
+.header{
+    margin-top:1%;
+    height: 80px;
+}
+.header_div{
+
+}
+.header_logo_div{
+    float:left;
+    width:60%;
+}
+.header_navi_div{
+    float:left;
+    width:40%;
+    line-height: 50px
+}
+.header_navi_span{
+    float:right;
+    font-size: 25px;
+    font-family: 'Sunflower', sans-serif;
+}
+.header_logo{
+    font-size:55px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.header_beta{
+    font-size:15px;
+}
+
+.canGraduate_nowPage{
+    font-weight: 700;
+}
+
+
+.to_main_btn{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:10px;
+    margin:20px;
+    font-size:40px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.main{
+    margin-top:5%;
+    margin-left:5%;
+    margin-right:5%;
+}
+.main_div{
+    padding:3%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.example_img{
+    width:80%;
+    height:auto;
+}
+.notice_div{
+
+}
+.notice_logo{
+    font-size:40px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.notice_each{
+    margin-top:3%
+}
+.notice_title{
+    font-size:30px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.notice_content{
+    font-size:20px;
+    font-family: 'Sunflower', sans-serif;
+}
+
+.dept_div{
+    font-family: 'Sunflower', sans-serif;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+select {
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-family: 'Sunflower', sans-serif;
+    color: black;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.grade_card_div{
+    font-family: 'Sunflower', sans-serif;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+.how_to_get_grade_card{
+    color:red;
+    font-size: 15px;
+    font-family: 'Sunflower', sans-serif;
+    cursor: pointer;
+}
+.how_to_get_grade_card_div{
+    display:none;
+    margin-bottom: 30px;
+    padding:1%;
+    border: 1px dashed black;
+    border-radius: 8px;
+}
+.how_to_get_grade_card_img{
+    width:80%;
+    height:auto;
+}
+.how_to_get_grade_card_cancel{
+    margin-right: 3%;
+    margin-top: 1%;
+}
+.how_to_get_grade_card_cancel_btn{
+    font-size: 40px;
+    font-family: 'Do Hyeon', sans-serif;
+    cursor: pointer;
+}
+.english_div{
+    font-family: 'Sunflower', sans-serif;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+.english_score_input{
+    height:30px;
+    width: 110px;
+    font-family: 'Sunflower', sans-serif;
+    font-size: 20px;
+}
+
+.canI_submit_div{
+    margin-top:50px;
+    width:100%;
+    margin-left:auto;
+}
+
+.canI_submit_btn{
+    margin-left:35%;
+    margin-right:35%;
+    width:30%;
+    height:80px;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size:30px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.result_main{
+    margin-top:3%;
+    margin-left:5%;
+    margin-right:5%;
+}
+.result_main_div{
+
+}
+.result_notice_div{
+
+}
+.result_notice_title{
+    font-size: 30px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.result_notice_content{
+    font-size: 18px;
+    font-family: 'Sunflower', sans-serif;
+}
+.result_notice_content_div{
+    padding-left:20px;
+    padding-bottom: 10px;
+}
+.result_each{
+    margin-bottom: 10px;
+    padding:1%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.result_each_title{
+    font-size: 25px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.result_each_content{
+    
+}
+.result_pass_div{
+    margin-bottom: 5px;
+    padding: 7px;
+    background-color: #77dd77;
+    border-radius: 7px;
+}
+.result_fail_div{
+    margin-bottom: 5px;
+    padding: 7px;
+    background-color: #ff6666;
+    border-radius: 7px;
+}
+.result_pass{
+    font-size: 18px;
+    font-family: 'Sunflower', sans-serif;
+}
+.result_fail{
+    font-size: 18px;
+    font-family: 'Sunflower', sans-serif;
+}
+.english_img{
+    width:60%;
+    height:auto;
+}
+
+.footer_div{
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+}
+.footer_content{
+
+}
+.footer_etc{
+
+}

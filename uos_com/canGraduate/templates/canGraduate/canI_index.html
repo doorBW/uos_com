@@ -1,0 +1,182 @@
+{% load static %}
+<!doctype html>
+<html lang = "ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Can Graduate</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css.css' %}">
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        var how_to_get_grade_card_div = $('#how_to_get_grade_card_div');
+        var how_to_get_a = $('.how_to_get_grade_card');
+        var how_to_get_grade_card_cancel_btn = $('.how_to_get_grade_card_cancel_btn');
+
+        how_to_get_a.click(function(){
+            how_to_get_grade_card_div.fadeIn('slow');
+            how_to_get_a.focus();
+        });
+        
+        how_to_get_grade_card_cancel_btn.click(function(){
+            how_to_get_grade_card_div.fadeOut('slow');
+        })
+
+        jQuery('#english_select').change(function() {
+            var state = jQuery('#english_select option:selected').val();
+
+            switch(state){
+                case 'TOEIC':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                    break;
+                };
+                case 'TOEFL(PBT)':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                    break;
+                };
+                case 'TOEFL(CBT)':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                    break;
+                };
+                case 'TOEFL(IBT)':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                    break;
+                };
+                case 'TEPS':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                    break;
+                };
+                case 'IELTS':{
+                    $('#english_score').remove();
+                    $('#english_div').append(
+                        "<select id='english_score' name='english_score' class='english_score_input'> <option value='7.5-9.0'>7.5-9.0</option> <option value='7.0-7.4'>7.0-7.4</option> <option value='6.5-6.9'>6.5-6.9</option> <option value='6.0-6.4'>6.0-6.4</option> <option value='5.5-5.9'>5.5-5.9</option> <option value='5.0-5.4'>5.0-5.4</option> <option value='1.0-4.9'>1.0-4.9</option> </select>"
+                    );
+                    break;
+                };
+                case 'TOEIC Speaking':{
+                    $('#english_score').remove();
+                    $('#english_div').append(
+                        "<select id='english_score' name='english_score' class='english_score_input'> <option value='160-200'>160-200</option> <option value='150-159'>150-159</option> <option value='140-149'>140-149</option> <option value='130-139'>130-139</option> <option value='120-129'>120-129</option> <option value='110-119'>110-119</option> <option value='100-109'>100-109</option> <option value='0-99'>0-99</option> </select>"
+                    );
+                    break;
+                };
+                case 'TEPS Speaking':{
+                    $('#english_score').remove();
+                    $('#english_div').append(
+                        "<select id='english_score' name='english_score' class='english_score_input'> <option value='1+'>1+</option> <option value='1'>1</option> <option value='2+'>2+</option> <option value='2'>2</option> <option value='3+'>3+</option> <option value='3'>3</option> <option value='4+'>4+</option> <option value='4'>4</option> <option value='5+'>5+</option> <option value='5'>5</option> </select>"
+                    );
+                    break;
+                };
+                case 'OPIc':{
+                    $('#english_score').remove();
+                    $('#english_div').append(
+                        "<select id='english_score' name='english_score' class='english_score_input'> <option value='NL'>NL</option> <option value='NM'>NM</option> <option value='NH'>NH</option> <option value='IL'>IL</option> <option value='IM'>IM</option> <option value='IH'>IH</option> <option value='AL'>AL</option> </select>"
+                    );
+                    break;
+                };
+                case 'none':{
+                    $('#english_score').remove();
+                    $('#english_div').append("<input id='english_score' name='english_score' type='hidden' value='none' class='english_score_input'>");
+                    break;
+                }
+            }
+        });
+    });
+    function need_value(){
+        var form = document.can_graduate;
+        if (form.dept.value == ""){
+            alert("학과를 선택해주세요!");
+            return form.dept.focus();
+        }else if(form.grade_card.value == ""){
+            alert("성적표를 첨부해주세요!\n(첨부방법을 모르시겠다면, 빨간글자를 눌러보세요!)");
+            return form.grade_card.focus();
+        }else if(form.english_score.value == ""){
+            alert("영어성적을 입력해주세요!");
+            return form.english_score.focus();
+        }else{
+            form.submit();
+        }
+    }
+    </script>
+</head>
+<body class='body_container'>
+    <header class='header'>
+        <div class='header_div'>
+            <div class="header_logo_div">
+                <a href='http://127.0.0.1:8000/canGraduate'><span class='header_logo'>UOS_INFO <span class='header_beta'>beta</span></span></a>
+            </div>
+            <div class="header_navi_div">
+                <span class='header_navi_span'><span class='canGraduate_nowPage'>졸업확인하기</span></span>
+            </div>
+        </div> 
+    </header>
+    <main class='main'>
+        <div class='main_div'>
+            <form action="checking_graduataion" name='can_graduate' method='POST' enctype="multipart/form-data">{% csrf_token %}
+            <div class='dept_div'>
+                학과를 선택해주세요.&nbsp; &nbsp; &nbsp; &nbsp; 
+                <select name="dept">
+                <option value="">학과</option>
+                <option value="전자전기컴퓨터공학부">전자전기컴퓨터공학부</option>
+                <!-- <option value="건축공학과">건축공학과</option> -->
+                </select>
+            </div>
+
+            <div class='grade_card_div'>
+                    성적표 파일을 불러와주세요.&nbsp; &nbsp; <input type="file" name='grade_card' accept=".xls"><br><a href='#how_to_get_grade_card_div'><span class='how_to_get_grade_card'>성적표 파일 어떻게 가져오나요?</span></a>
+            </div>
+
+            <div id='how_to_get_grade_card_div' class="how_to_get_grade_card_div">
+                <div style='float:right;' class='how_to_get_grade_card_cancel'>
+                    <span class="how_to_get_grade_card_cancel_btn">
+                        닫기
+                    </span>
+                </div>
+                1. wise에 접속하여 로그인 합니다.<br>
+                2. 좌측 메뉴 중 '수업/성적' -> '성적표조회' 탭을 누릅니다.<br>
+                3. 스크롤을 내려서 좌측하단에 있는 '파일로 내보내기'를 눌러 .xls파일을 다운받습니다.<br>
+                <img src="{% static 'img/how_to_get_grade_card_img.png' %}" class='how_to_get_grade_card_img' alt="">
+            </div>
+
+            <div id='english_div' class='english_div'>
+                영어시험을 선택하고 점수를 입력해주세요. &nbsp; &nbsp; 
+                <select id='english_select' name="english_test_name">
+                <option value="TOEIC">TOEIC</option>
+                <option value="TOEFL(PBT)">TOEFL(PBT)</option>
+                <option value="TOEFL(CBT)">TOEFL(CBT)</option>
+                <option value="TOEFL(IBT)">TOEFL(IBT)</option>
+                <option value="TEPS">TEPS</option>
+                <option value="IELTS">IELTS</option>
+                <option value="TOEIC Speaking">TOEIC Speaking</option>
+                <option value="TEPS Speaking">TEPS Speaking</option>
+                <option value="OPIc">OPIc</option>
+                <option value="none">공인영어성적없음</option>
+                </select> &nbsp; &nbsp; 
+                점수: <input id='english_score' name='english_score' type="number" class='english_score_input'>
+            </div>
+
+            <div class="canI_submit_div">
+                <input type="button" class='canI_submit_btn' onclick="need_value()" value='확인하기!'>
+            </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer_div">
+            <span class="footer_content">
+                Copyright @2018 All rights reserved | This page made by 문범우<br>
+                해당사이트의 모든 저작권은 제작자에게 있습니다.<br>
+                사이트에 대한 문의나 건의사항은 하단 메일을 통해 연락주시길 바랍니다.<br>
+            </span><br>
+            <span class='footer_etc'>
+                BLOG: <a href="https://doorbw.tistory.com" target="_blank">doorbw.tistory.com</a><br>
+                E-MAIL: <a href='mailto:doorbw@outlook.com'>doorbw@outlook.com</a>
+            </span>
+        </div>
+    </footer>
+</body>
