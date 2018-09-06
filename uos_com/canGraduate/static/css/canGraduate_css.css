@@ -24,7 +24,7 @@ font-family: 'Sunflower', sans-serif; */
 }
 
 a {
-    color: red;
+    color: black;
     text-decoration: none;
 }
 a:hover{
@@ -128,7 +128,7 @@ select {
 .grade_card_div{
     font-family: 'Sunflower', sans-serif;
     font-size: 25px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .how_to_get_grade_card{
     color:red;
@@ -155,6 +155,15 @@ select {
     font-size: 40px;
     font-family: 'Do Hyeon', sans-serif;
     cursor: pointer;
+}
+.example_grade_card{
+    color:red;
+    font-size: 15px;
+    font-family: 'Sunflower', sans-serif;
+    cursor: pointer;
+}
+.example_grade_card_div{
+    margin-bottom: 30px;
 }
 .english_div{
     font-family: 'Sunflower', sans-serif;
