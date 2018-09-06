@@ -237,7 +237,7 @@ def checking_graduataion(request):
             for i in selective_non_major_subject:
                 year = year_list[subject_list.index(i)]
                 term = term_list[subject_list.index(i)]
-                if score_list[subject_list.index(i)] == "F":
+                if grade_list[subject_list.index(i)] == "F":
                     continue
                 term_code = 'A10'
                 if term == '2학기':
