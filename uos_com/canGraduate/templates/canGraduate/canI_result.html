@@ -6,13 +6,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Can Graduate</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css.css' %}">
-	
+	<style type='text/css'>
+        @media only screen and (max-width:500px){
+            .header_navi_span{
+                float:right;
+                font-size: 18px;
+                font-family: 'Sunflower', sans-serif;
+            }
+            .header_logo{
+                font-size:30px;
+                font-family: 'Do Hyeon', sans-serif;
+            }
+            .canI_submit_btn{
+                margin-left:35%;
+                margin-right:35%;
+                width:30%;
+                height:60px;
+                font-family: 'Do Hyeon', sans-serif;
+                font-size:18px;
+                background-color: aliceblue;
+                border-radius: 10px;
+            }
+        }
+    </style>	
 </head>
 <body class='body_container'>
     <header class='header'>
         <div class='header_div'>
             <div class="header_logo_div">
-                <a href='http://127.0.0.1:8000/canGraduate/'><span class='header_logo'>UOS_INFO <span class='header_beta'>beta</span></span></a>
+                <a href='http://www.uos-info.com/'><span class='header_logo'>UOS_INFO <span class='header_beta'>beta</span></span></a>
             </div>
             <div class="header_navi_div">
                 <span class='header_navi_span'><a href='canI'>졸업확인하기</a></span>

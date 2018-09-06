@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -25,8 +25,12 @@ SECRET_KEY = 'evk^zd-3&85vk(^o$zbl3n%3#5dw)*l*&87bk^7^!^jo50onkr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '.ap-northeast-2.compute.amazonaws.com',
+    '.uos-info.com',
+]
+# scp -i /Users/doorbw/Desktop/Beomwoo/uos_com/server/uos_com_key.pem -r django ubuntu@ec2-52-79-241-160.ap-northeast-2.compute.amazonaws.com:/srv/ 
 
 # Application definition
 
@@ -119,3 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    "/srv/django/uos_com/canGraduate/static",
+]
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
