@@ -4,7 +4,7 @@ import requests, json
 import xmltodict
 
 apiKey = '201809507OAM40045'
-home_url = 'http://127.0.0.1:8000'
+home_url = 'http://ec2-52-79-241-160.ap-northeast-2.compute.amazonaws.com/'
 
 # Create your views here.
 def index(request):
@@ -146,10 +146,10 @@ def checking_graduataion(request):
             # 1. 총 취득 학점 130 이상
             if total_score >= 130:
                 result_message['total_score_result'] = 1
-                result_message['total_score'] = '총 취득 학점은 {0}점으로 졸업기준을 채웠습니다.'.format(total_score)
+                result_message['total_score'] = '총 취득 학점은 {0}학점으로 졸업기준을 채웠습니다.'.format(total_score)
             else:
                 result_message['total_score_result'] = 0
-                result_message['total_score'] = '총 취득 학점은 {0}점으로 {1}점을 더 채우셔야 합니다.'.format(total_score, 130-total_score)
+                result_message['total_score'] = '총 취득 학점은 {0}학점으로 {1}학점을 더 채우셔야 합니다.'.format(total_score, 130-total_score)
 
             # 2. 평점 평균 2.0 이상
             if total_grade_avg >= 2.0:
@@ -237,6 +237,8 @@ def checking_graduataion(request):
             for i in selective_non_major_subject:
                 year = year_list[subject_list.index(i)]
                 term = term_list[subject_list.index(i)]
+                if score_list[subject_list.index(i)] == "F":
+                    continue
                 term_code = 'A10'
                 if term == '2학기':
                     term_code = 'A20'
@@ -267,24 +269,24 @@ def checking_graduataion(request):
             # 공학소양
             if haveTo_non_major_a >= 2:
                 result_message['major']['haveTo_non_major_a_result'] = 1
-                result_message['major']['haveTo_non_major_a'] = '공학소양 학점을 {0}점 수강하셔서 졸업요건(2학점)을 만족하였습니다.'.format(haveTo_non_major_a)
+                result_message['major']['haveTo_non_major_a'] = '공학소양 학점을 {0}학점 수강하셔서 졸업요건(2학점)을 만족하였습니다.'.format(haveTo_non_major_a)
             else:
                 result_message['major']['haveTo_non_major_a_result'] = 0
-                result_message['major']['haveTo_non_major_a'] = '공학소양 학점을 {0}점 수강하셔서 졸업요건(2학점)을 만족하지 못했습니다.'.format(haveTo_non_major_a)
+                result_message['major']['haveTo_non_major_a'] = '공학소양 학점을 {0}학점 수강하셔서 졸업요건(2학점)을 만족하지 못했습니다.'.format(haveTo_non_major_a)
             # 자연공학
             if haveTo_non_major_b >= 3:
                 result_message['major']['haveTo_non_major_b_result'] = 1
-                result_message['major']['haveTo_non_major_b'] = '자연공학 학점을 {0}점 수강하셔서 졸업요건(3학점)을 만족하였습니다.'.format(haveTo_non_major_b)
+                result_message['major']['haveTo_non_major_b'] = '자연공학 학점을 {0}학점 수강하셔서 졸업요건(3학점)을 만족하였습니다.'.format(haveTo_non_major_b)
             else:
                 result_message['major']['haveTo_non_major_b_result'] = 0
-                result_message['major']['haveTo_non_major_b'] = '자연공학 학점을 {0}점 수강하셔서 졸업요건(3학점)을 만족하지 못했습니다.'.format(haveTo_non_major_b)
+                result_message['major']['haveTo_non_major_b'] = '자연공학 학점을 {0}학점 수강하셔서 졸업요건(3학점)을 만족하지 못했습니다.'.format(haveTo_non_major_b)
             # 인문사회
             if haveTo_non_major_c >= 3:
                 result_message['major']['haveTo_non_major_c_result'] = 1
-                result_message['major']['haveTo_non_major_c'] = '인문사회 학점을 {0}점 수강하셔서 졸업요건(3학점)을 만족하였습니다.'.format(haveTo_non_major_c)
+                result_message['major']['haveTo_non_major_c'] = '인문사회 학점을 {0}학점 수강하셔서 졸업요건(3학점)을 만족하였습니다.'.format(haveTo_non_major_c)
             else:
                 result_message['major']['haveTo_non_major_c_result'] = 0
-                result_message['major']['haveTo_non_major_c'] = '인문사회 학점을 {0}점 수강하셔서 졸업요건(3학점)을 만족하지 못했습니다.'.format(haveTo_non_major_c)
+                result_message['major']['haveTo_non_major_c'] = '인문사회 학점을 {0}학점 수강하셔서 졸업요건(3학점)을 만족하지 못했습니다.'.format(haveTo_non_major_c)
                 
             # print(result_message)
         else:
