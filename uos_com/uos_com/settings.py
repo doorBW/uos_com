@@ -25,8 +25,11 @@ SECRET_KEY = 'evk^zd-3&85vk(^o$zbl3n%3#5dw)*l*&87bk^7^!^jo50onkr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '.ap-northeast-2.compute.amazonaws.com',
+]
+# scp -i /Users/doorbw/Desktop/Beomwoo/uos_com/server/uos_com_key.pem -r django ubuntu@ec2-52-79-241-160.ap-northeast-2.compute.amazonaws.com:/srv/ 
 
 # Application definition
 

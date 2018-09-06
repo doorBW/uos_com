@@ -1,9 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300');
 /* font-family: 'Do Hyeon', sans-serif;
 font-family: 'Sunflower', sans-serif; */
+@media (max-width:500px){
+    .header_navi_span{
+        float:right;
+        font-size: 18px;
+        font-family: 'Sunflower', sans-serif;
+    }
+    .header_logo{
+        font-size:30px;
+        font-family: 'Do Hyeon', sans-serif;
+    }
+    .canI_submit_btn{
+        margin-left:35%;
+        margin-right:35%;
+        width:30%;
+        height:60px;
+        font-family: 'Do Hyeon', sans-serif;
+        font-size:18px;
+        background-color: aliceblue;
+        border-radius: 10px;
+    }
+}
 
 a {
-    color: black;
+    color: red;
     text-decoration: none;
 }
 a:hover{

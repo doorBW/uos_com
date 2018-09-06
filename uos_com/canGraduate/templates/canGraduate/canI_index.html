@@ -21,6 +21,67 @@
         how_to_get_grade_card_cancel_btn.click(function(){
             how_to_get_grade_card_div.fadeOut('slow');
         })
+        var state = jQuery('#english_select option:selected').val();
+        switch(state){
+            case 'TOEIC':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                break;
+            };
+            case 'TOEFL(PBT)':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                break;
+            };
+            case 'TOEFL(CBT)':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                break;
+            };
+            case 'TOEFL(IBT)':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                break;
+            };
+            case 'TEPS':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='number' class='english_score_input'>");
+                break;
+            };
+            case 'IELTS':{
+                $('#english_score').remove();
+                $('#english_div').append(
+                    "<select id='english_score' name='english_score' class='english_score_input'> <option value='7.5-9.0'>7.5-9.0</option> <option value='7.0-7.4'>7.0-7.4</option> <option value='6.5-6.9'>6.5-6.9</option> <option value='6.0-6.4'>6.0-6.4</option> <option value='5.5-5.9'>5.5-5.9</option> <option value='5.0-5.4'>5.0-5.4</option> <option value='1.0-4.9'>1.0-4.9</option> </select>"
+                );
+                break;
+            };
+            case 'TOEIC Speaking':{
+                $('#english_score').remove();
+                $('#english_div').append(
+                    "<select id='english_score' name='english_score' class='english_score_input'> <option value='160-200'>160-200</option> <option value='150-159'>150-159</option> <option value='140-149'>140-149</option> <option value='130-139'>130-139</option> <option value='120-129'>120-129</option> <option value='110-119'>110-119</option> <option value='100-109'>100-109</option> <option value='0-99'>0-99</option> </select>"
+                );
+                break;
+            };
+            case 'TEPS Speaking':{
+                $('#english_score').remove();
+                $('#english_div').append(
+                    "<select id='english_score' name='english_score' class='english_score_input'> <option value='1+'>1+</option> <option value='1'>1</option> <option value='2+'>2+</option> <option value='2'>2</option> <option value='3+'>3+</option> <option value='3'>3</option> <option value='4+'>4+</option> <option value='4'>4</option> <option value='5+'>5+</option> <option value='5'>5</option> </select>"
+                );
+                break;
+            };
+            case 'OPIc':{
+                $('#english_score').remove();
+                $('#english_div').append(
+                    "<select id='english_score' name='english_score' class='english_score_input'> <option value='NL'>NL</option> <option value='NM'>NM</option> <option value='NH'>NH</option> <option value='IL'>IL</option> <option value='IM'>IM</option> <option value='IH'>IH</option> <option value='AL'>AL</option> </select>"
+                );
+                break;
+            };
+            case 'none':{
+                $('#english_score').remove();
+                $('#english_div').append("<input id='english_score' name='english_score' type='hidden' value='none' class='english_score_input'>");
+                break;
+            }
+        }
 
         jQuery('#english_select').change(function() {
             var state = jQuery('#english_select option:selected').val();
