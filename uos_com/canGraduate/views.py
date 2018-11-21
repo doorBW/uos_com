@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse
 import pandas as pd
 import requests, json
 import xmltodict
+from django.views.decorators.csrf import csrf_exempt
 
 apiKey = '201809507OAM40045'
-home_url = 'http://ec2-52-79-241-160.ap-northeast-2.compute.amazonaws.com/'
+home_url = 'http://uos-info.com'
 
 # Create your views here.
 def index(request):
@@ -16,6 +17,7 @@ def error_page(request):
 def canI(request):
     return render(request, 'canGraduate/canI_index.html')
 
+@csrf_exempt
 def checking_graduataion(request):
     try:
         result_message = {}

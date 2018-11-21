@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import raven
+
+DSN_URL = 'https://186a2a21783f4ae9885e00e4074c610d@sentry.io/1286966'
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
+
+RAVEN_CONFIG = {
+    'dsn': '{}'.format(DSN_URL), # DSN_URL을 위에 적어주셔야 동작합니다.
+    #'release': raven.fetch_git_sha(BASE_DIR), # Django가 Git으로 관리되는 경우 자동으로 커밋 버전에 따른 트래킹을 해줍니다.
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -42,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'canGraduate',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [

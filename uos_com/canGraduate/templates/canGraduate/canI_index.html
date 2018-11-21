@@ -200,7 +200,8 @@
     </header>
     <main class='main'>
         <div class='main_div'>
-            <form action="checking_graduataion" name='can_graduate' method='POST' enctype="multipart/form-data">{% csrf_token %}
+            <form action="http://uos-info.com/checking_graduataion" name='can_graduate' method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
             <div class='dept_div'>
                 학과를 선택해주세요.&nbsp; &nbsp; &nbsp; &nbsp; 
                 <select name="dept">
