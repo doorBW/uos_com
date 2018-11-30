@@ -7,8 +7,8 @@ def getInput(input):
 
 def MA(input):
 	reload(sys)
-    sys.setdefaultencoding('utf-8')
-    input = input.decode('utf-8')
+	sys.setdefaultencoding('utf-8')
+	input = input.decode('utf-8')
 	komoran = Komoran()
 	answer = 'MA함수 호출'
 	nouns = komoran.nouns(input)
