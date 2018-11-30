@@ -21,16 +21,17 @@ def MA(input):
 	komoran = Komoran()
 	nouns_list = komoran.nouns(input)
 
-	answer += '형태소 분석 결과: '
-	for i in nouns_list:
-		i = i.upper()
-		i = i.replace(' ','')
+	# answer += '형태소 분석 결과: '
+	# for i in nouns_list:
+	# 	i = i.upper()
+	# 	i = i.replace(' ','')
 
 	company = None
 	who = None
 	action = 0
 	# 키워드 추가
 	for noun in nouns_list:
+		action += noun
 		# 액션 설정
 		if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
 			action = 1
@@ -88,7 +89,7 @@ def MA(input):
 	# 기타프로그램
 
 	# 예외
-
+	answer += '/답변 끝'
 	return answer
 
 def crawl(action, url, key1=None, key2=None, key3=None):
@@ -101,6 +102,7 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 		res = 0
 		get_list = soup.select('tbody > tr > td > span')
 		for each in get_list:
+			# 회사별, who별로 나눠야함
 			if who in each.text:
 				res += 1
 #LtableJobNoticesList > tbody > tr:nth-child(2) > td:nth-child(2) > span
