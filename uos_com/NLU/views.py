@@ -58,16 +58,24 @@ def MA(input):
 	if action == 1:
 		if who == '':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi',company,who)
+			answer += '전체검색결과: '
 		elif who == '신입':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
+			answer += '신입검색결과: '
 		elif who == '경력':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=B',company,who)
+			answer += '경력검색결과: '
 		elif who == '인턴':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=C',company,who)
-		if res > 0:
-			answer = '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+res+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+			answer += '인턴검색결과: '
 		else:
-			answer = '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+			res = 0
+			answer += '이건뭐냐: '
+			answer += who
+		if res > 0:
+			answer += '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+res+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+		else:
+			answer += '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
 	# 채용공고
 	# 1개이상: 네, 현재 LG CNS에 대한 n개의 공고가 있습니다. >>링크에서확인하기
 
