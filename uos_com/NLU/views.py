@@ -28,10 +28,9 @@ def MA(input):
 		komoran = Komoran()
 		nouns_list = komoran.nouns(input)
 
-		# answer += '형태소 분석 결과: '
-		# for i in nouns_list:
-		# 	i = i.upper()
-		# 	i = i.replace(' ','')
+		for i in nouns_list:
+			i = i.upper()
+			i = i.replace(' ','')
 
 		company = None
 		who = None
@@ -71,18 +70,25 @@ def MA(input):
 			elif who == '신입':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
 				answer += '신입검색결과: '
+				who += ' '
 			elif who == '경력':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=B',company,who)
 				answer += '경력검색결과: '
+				who += ' '
 			elif who == '인턴':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=C',company,who)
 				answer += '인턴검색결과: '
+				who += ' '
 			else:
 				res = 0
 				answer += '이건뭐냐: '
 				answer += who
-			if res > 0:
+			if company == None and res > 0:
+				answer += '네, 현재 '+who+'채용공고가 '+res+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+			elif res > 0:
 				answer += '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+res+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+			elif company == None:
+				answer += '현재 '+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
 			else:
 				answer += '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
 		# 채용공고
