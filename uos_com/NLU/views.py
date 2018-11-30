@@ -56,7 +56,7 @@ def MA(input):
 
 	# 채용공고 크롤링 처리
 	if action == 1:
-		if who == ''
+		if who == '':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi',company,who)
 		elif who == '신입':
 			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
