@@ -105,7 +105,7 @@ def displayStart(request):
 	browser.implicitly_wait(3)
 	return HttpResponse('display start')
 
-def displayEnd(request):
+def displayStop(request):
 	global display, browser
 	display.stop()
 	browser.quit()
