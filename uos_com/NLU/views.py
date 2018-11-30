@@ -1,3 +1,5 @@
+#-*- coding:utf-8 -*-
+
 from django.shortcuts import render
 from konlpy.tag import Komoran
 from imp import reload
@@ -7,8 +9,7 @@ def getInput(input):
 	return 0
 
 def MA(input):
-	reload(sys)
-	sys.setdefaultencoding('utf-8')
+	answer += type(input)
 	input = input.decode('utf-8')
 	komoran = Komoran()
 	answer = 'MA함수 호출'
