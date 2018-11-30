@@ -112,8 +112,8 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 	soup = BeautifulSoup(html, 'html.parser')
 	if action == 1:
 		res = 0
-		company_list = soup.findall('td',attrs={'class':'companyName'})
-		who_list = soup.findall('td',attrs={'class':'applyAs'})
+		company_list = soup.select('tbody > tr > td.companyName')
+		who_list = soup.select('tbody > tf > td > span.applyAs')
 		# 회사별, who별로 나눠야함
 		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
 			for company,idx in enumerate(company_list):
