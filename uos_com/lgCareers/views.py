@@ -4,5 +4,9 @@ from django.http import HttpResponse
 def index(request):
 	return 0
 
+# just return string
 def getInput(request,input):
-	return HttpResponse(input+' 값 제대로 들어옴')
+	answer = ''
+	answer += input
+	answer += ' 값 제대로 들어왔음'
+	return answer
