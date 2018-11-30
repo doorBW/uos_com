@@ -9,6 +9,7 @@ def getInput(input):
 	return 0
 
 def MA(input):
+	answer = ''
 	answer += type(input)
 	input = input.decode('utf-8')
 	komoran = Komoran()
