@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from konlpy.tag import Komoran
+from imp import reload
 import sys
 # Create your views here.
 def getInput(input):
