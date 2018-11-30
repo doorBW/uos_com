@@ -37,7 +37,7 @@ def MA(input):
 		# 채용공고:회사
 		if (noun=='LGCNS')or(noun=='CNS')or(noun=='씨엔에스')or\
 			(noun=='LG전자')or(noun=='전자')or\
-			(noun=='LG디스플레이')or(noun=='디스플레이')||(noun=='LG디플')or\
+			(noun=='LG디스플레이')or(noun=='디스플레이')or(noun=='LG디플')or\
 			(noun=='LG이노텍')or(noun=='이노텍')or\
 			(noun=='LG화학')or(noun=='화학')or\
 			(noun=='LG생활건강')or(noun=='생활건강')or\
