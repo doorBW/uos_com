@@ -112,11 +112,25 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 	soup = BeautifulSoup(html, 'html.parser')
 	if action == 1:
 		res = 0
-		get_list = soup.select('tbody > tr > td > span')
-		for each in get_list:
-			# 회사별, who별로 나눠야함
-			if who in each.text:
-				res += 1
+		company_list = soup.findall('td',attrs={'class':'companyName'})
+		who_list = soup.findall('td',attrs={'class':'applyAs'})
+		# 회사별, who별로 나눠야함
+		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
+			for company,idx in enumerate(company_list):
+				if key1 in company:
+					if key2 in who_list[idx]:
+						res += 1
+		elif key1 != None:
+			for company in company_list:
+				if key1 in company:
+					res += 1
+		elif key2 != None:
+			for who in who_list:
+				if key2 in who:
+					res += 1
+		else:
+			res = len(company_list)
+			
 #LtableJobNoticesList > tbody > tr:nth-child(2) > td:nth-child(2) > span
 	return res
 
