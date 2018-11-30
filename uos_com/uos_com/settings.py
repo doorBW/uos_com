@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'canGraduate',
     'kakao',
     'coursePlan',
+    'NLU',
+    'lgCareers',
     'raven.contrib.django.raven_compat',
 ]
 
