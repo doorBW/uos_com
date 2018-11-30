@@ -7,4 +7,4 @@ def index(request):
 
 def getInput(request,input):
 	answer = MA(input)
-	return HttpResponse(answer+'/값 제대로 들어옴')
+	return HttpResponse(answer)

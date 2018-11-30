@@ -11,10 +11,14 @@ def getInput(input):
 def MA(input):
 	answer = ''
 	input = unquote(input)
+	input = input.upper()
 	komoran = Komoran()
-	nouns = komoran.nouns(input)
+	nouns_list = komoran.nouns(input)
 	answer += '형태소 분석 결과: '
-	for i in nouns:
+	for i in nouns_list:
 		answer += i
 		answer += ', '
 	return answer
+
+def crawl(key1, key2, key3):
+	return 0
