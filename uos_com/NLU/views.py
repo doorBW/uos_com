@@ -83,12 +83,12 @@ def MA(input):
 	return answer
 
 def crawl(action, url, key1=None, key2=None, key3=None):
-	global display
+	global display, browser
 
 	browser.get(url)
 	html = browser.page_source
 	soup = BeautifulSoup(html, 'html.parser')
-	if action == 1
+	if action == 1:
 		res = 0
 		get_list = soup.select('tbody > tr > td > span')
 		for each in get_list:
