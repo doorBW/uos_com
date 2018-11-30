@@ -4,6 +4,12 @@ from django.shortcuts import render
 from konlpy.tag import Komoran
 from imp import reload
 from urllib.parse import unquote
+from selenium import webdriver
+from pyvirtualdisplay import Display
+from bs4 import BeautifulSoup
+from django.http import HttpResponse
+display = None
+browser = None
 # Create your views here.
 def getInput(input):
 	return 0
@@ -14,11 +20,93 @@ def MA(input):
 	input = input.upper()
 	komoran = Komoran()
 	nouns_list = komoran.nouns(input)
+
 	answer += '형태소 분석 결과: '
 	for i in nouns_list:
-		answer += i
-		answer += ', '
+		i = i.upper()
+		i = i.replace(' ','')
+
+	company = None
+	who = None
+	action = 0
+	# 키워드 추가
+	for noun in nouns_list:
+		# 액션 설정
+		if (noun=='채용공고')||(noun=='공고')||(noun=='일자리')||(noun=='자리'):# 채용공고
+			action = 1
+		# 채용공고:회사
+		if (noun=='LGCNS')||(noun=='CNS')||(noun=='씨엔에스')||\
+			(noun=='LG전자')||(noun=='전자')||\
+			(noun=='LG디스플레이')||(noun=='디스플레이')||(noun=='LG디플')||\
+			(noun=='LG이노텍')||(noun=='이노텍')||\
+			(noun=='LG화학')||(noun=='화학')||\
+			(noun=='LG생활건강')||(noun=='생활건강')||\
+			(noun=='LG유플러스')||(noun=='유플러스')||\
+			(noun=='LG상사')||(noun=='상사'):
+			company = noun
+			if (noun=='LGCNS')||(noun=='CNS')||(noun=='씨엔에스'):
+				company = 'LG CNS'
+
+		# 채용공고:신입/경력/인턴
+		if (noun=='신입')||(noun=='경력')||(noun=='인턴'):
+			who = noun
+
+
+
+
+	# 채용공고 크롤링 처리
+	if action == 1:
+		if who == ''
+			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi',company,who)
+		elif who == '신입':
+			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
+		elif who == '경력':
+			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=B',company,who)
+		elif who == '인턴':
+			res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=C',company,who)
+		if res > 0:
+			answer = '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+res+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+		else:
+			answer = '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+	# 채용공고
+	# 1개이상: 네, 현재 LG CNS에 대한 n개의 공고가 있습니다. >>링크에서확인하기
+
+	
+	# 채용절차
+
+	# 채용문의
+
+	# 기타프로그램
+
+	# 예외
+
 	return answer
 
-def crawl(key1, key2, key3):
-	return 0
+def crawl(action, url, key1=None, key2=None, key3=None):
+	global display
+
+	browser.get(url)
+	html = browser.page_source
+	soup = BeautifulSoup(html, 'html.parser')
+	if action == 1
+		res = 0
+		get_list = soup.select('tbody > tr > td > span')
+		for each in get_list:
+			if who in each.text:
+				res += 1
+#LtableJobNoticesList > tbody > tr:nth-child(2) > td:nth-child(2) > span
+	return res
+
+def displayStart(request):
+	global display, browser
+	display = Display(visible=0, size=(1024,768))
+	display.start()
+	browser = webdriver.Chrome()
+	browser.implicitly_wait(3)
+	return HttpResponse('display start')
+
+def displayEnd(request):
+	global display, browser
+	display.stop()
+	browser.quit()
+	return HttpResponse('display stop')
