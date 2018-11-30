@@ -32,23 +32,23 @@ def MA(input):
 	# 키워드 추가
 	for noun in nouns_list:
 		# 액션 설정
-		if (noun=='채용공고')||(noun=='공고')||(noun=='일자리')||(noun=='자리'):# 채용공고
+		if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
 			action = 1
 		# 채용공고:회사
-		if (noun=='LGCNS')||(noun=='CNS')||(noun=='씨엔에스')||\
-			(noun=='LG전자')||(noun=='전자')||\
-			(noun=='LG디스플레이')||(noun=='디스플레이')||(noun=='LG디플')||\
-			(noun=='LG이노텍')||(noun=='이노텍')||\
-			(noun=='LG화학')||(noun=='화학')||\
-			(noun=='LG생활건강')||(noun=='생활건강')||\
-			(noun=='LG유플러스')||(noun=='유플러스')||\
-			(noun=='LG상사')||(noun=='상사'):
+		if (noun=='LGCNS')or(noun=='CNS')or(noun=='씨엔에스')or\
+			(noun=='LG전자')or(noun=='전자')or\
+			(noun=='LG디스플레이')or(noun=='디스플레이')||(noun=='LG디플')or\
+			(noun=='LG이노텍')or(noun=='이노텍')or\
+			(noun=='LG화학')or(noun=='화학')or\
+			(noun=='LG생활건강')or(noun=='생활건강')or\
+			(noun=='LG유플러스')or(noun=='유플러스')or\
+			(noun=='LG상사')or(noun=='상사'):
 			company = noun
-			if (noun=='LGCNS')||(noun=='CNS')||(noun=='씨엔에스'):
+			if (noun=='LGCNS')or(noun=='CNS')or(noun=='씨엔에스'):
 				company = 'LG CNS'
 
 		# 채용공고:신입/경력/인턴
-		if (noun=='신입')||(noun=='경력')||(noun=='인턴'):
+		if (noun=='신입')or(noun=='경력')or(noun=='인턴'):
 			who = noun
 
 
