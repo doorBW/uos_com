@@ -10,7 +10,7 @@ def getInput(input):
 
 def MA(input):
 	answer = ''
-	answer += type(input)
+	answer += str(type(input))
 	input = input.decode('utf-8')
 	komoran = Komoran()
 	answer = 'MA함수 호출'
