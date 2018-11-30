@@ -9,13 +9,12 @@ def getInput(input):
 	return 0
 
 def MA(input):
+	answer = ''
 	input = unquote(input)
 	komoran = Komoran()
-	answer = 'MA함수 호출'
 	nouns = komoran.nouns(input)
+	answer += '형태소 분석 결과: '
 	for i in nouns:
 		answer += i
-		answer += '*'
-	answer += '//'
-	answer += input
+		answer += ', '
 	return answer
