@@ -15,6 +15,7 @@ def getInput(input):
 	return 0
 
 def MA(input):
+	global display, browser
 	try:
 		display = Display(visible=0, size=(1024,768))
 		display.start()
@@ -96,7 +97,7 @@ def MA(input):
 
 		# 예외
 		answer += '/답변 끝'
-		
+
 	finally:
 		display.stop()
 		browser.quit()
