@@ -15,6 +15,7 @@ def MA(input):
 	nouns = komoran.nouns(input)
 	for i in nouns:
 		answer += i
+		answer += '*'
 	answer += '//'
 	answer += input
 	return answer
