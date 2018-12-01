@@ -15,8 +15,8 @@ def keyboardInit(request):
 	return JsonResponse({
 				'type':'buttons',
 				'buttons':[ unichr(0x2753)+'어떤 기능이 있나요?',
-							unichr(0x2753)='대화 시작할래요!',
-							unichr(0x2753)='문의할게 있어요.']
+							unichr(0x2753)+'대화 시작할래요!',
+							unichr(0x2753)+'문의할게 있어요.']
 				})
 
 @csrf_exempt
