@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import json
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt    #포스트 에러 방지
 
 # Create your views here.
 def index(requset):
@@ -9,6 +10,7 @@ def index(requset):
 def userChatRoot(request):
 	return 0
 
+@csrf_exempt
 def getMessage(request):
 	if request.method == 'POST':
 		message = (request.body).decode('utf-8')
