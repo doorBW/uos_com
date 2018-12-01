@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from django.shortcuts import render
 import json
 from django.http import JsonResponse
@@ -32,7 +33,7 @@ def getMessage(request):
 		return JsonResponse({
 					'message':{
 						"user_key": "encryptedUserKey",
-						'text': unicode(answer)
+						'text': answer
 					},
 					'keyboard':{
 						'type':'text'
