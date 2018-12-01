@@ -18,4 +18,5 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('message/',views.getMessage),
+    path('keyboard/',views.keyboardInit)
 ]
