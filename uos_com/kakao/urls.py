@@ -17,5 +17,5 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path('', views.index),
-    path('lgcareers/',views.lgCareersGetInput),
+    path('message/',views.getMessage),
 ]

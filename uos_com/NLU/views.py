@@ -43,7 +43,7 @@ def MA(input):
 		action = 0
 		# 키워드 추가
 		for noun in new_nouns_list:
-			answer += noun
+			# answer += noun
 			# 액션 설정
 			if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
 				action = 1
