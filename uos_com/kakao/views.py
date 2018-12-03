@@ -60,14 +60,11 @@ def getMessage(request):
 				return JsonResponse({
 							'message':{
 								"user_key": "encryptedUserKey",
-								'text': answer
-							},
-							'message_button':{
-								'label': '채용공고 확인하기',
-								'url': answer_list['url']
-							},
-							'keyboard':{
-								'type':'text'
+								'text': answer,
+								'message_button':{
+									'label': '채용공고 확인하기',
+									'url': answer_list['url']
+								}
 							}
 						})
 			else:
@@ -75,9 +72,6 @@ def getMessage(request):
 							'message':{
 								"user_key": "encryptedUserKey",
 								'text': answer
-							},
-							'keyboard':{
-								'type':'text'
 							}
 						})
 		else:
@@ -85,9 +79,6 @@ def getMessage(request):
 						'message':{
 							"user_key": "encryptedUserKey",
 							'text': answer
-						},
-						'keyboard':{
-							'type':'text'
 						}
 					})
 	else:
