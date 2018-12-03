@@ -2,7 +2,6 @@
 
 from django.shortcuts import render
 from konlpy.tag import Mecab
-from imp import reload
 from urllib.parse import unquote
 from selenium import webdriver
 from pyvirtualdisplay import Display
@@ -140,16 +139,16 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 		# 회사별, who별로 나눠야함
 		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
 			for company,idx in enumerate(company_list):
-				if key1 in company:
-					if (key2 in who_list[idx]) or ('무관' in who_list[idx]):
+				if key1 in company.text:
+					if (key2 in who_list[idx].text) or ('무관' in who_list[idx].text):
 						res += 1
 		elif key1 != None:
 			for company in company_list:
-				if key1 in company:
+				if key1 in company.text:
 					res += 1
 		elif key2 != None:
 			for who in who_list:
-				if (key2 in who) or ('무관' in who):
+				if (key2 in who.text) or ('무관' in who.text):
 					res += 1
 		else:
 			res = len(company_list) - 1
