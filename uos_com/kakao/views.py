@@ -38,7 +38,7 @@ def getMessage(request):
 		elif content == (chr(0x2753)+' 문의할게 있어요.'):
 			answer = '해당 기능은 준비중 입니다.'
 		else:
-			answer_list = MA(input,0)
+			answer_list = MA(content)
 			# answer_list = {'action':action, 'company':company, 'who':who, 'res':str(res), 'url':url}
 			if 'action' in answer_list:
 				if answer_list['action'] == 1:
