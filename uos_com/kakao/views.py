@@ -55,20 +55,31 @@ def getMessage(request):
 			else:
 				answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-( \n저는 아직 LG채용 관련 내용만 답변드릴 수 있어요. \n오탈자나 띄어쓰기를 확인해주시고, 불편사항이 있으시다면 "챗봇 개선점"이라고 말씀해주세요.'
 
-		if answer_list['url'] != None:
-			return JsonResponse({
-						'message':{
-							"user_key": "encryptedUserKey",
-							'text': answer
-						},
-						'message_button':{
-							'label': '채용공고 확인하기',
-							'url': answer_list['url']
-						},
-						'keyboard':{
-							'type':'text'
-						}
-					})
+		if 'url' in answer_list:
+			if answer_list['url'] != None:
+				return JsonResponse({
+							'message':{
+								"user_key": "encryptedUserKey",
+								'text': answer
+							},
+							'message_button':{
+								'label': '채용공고 확인하기',
+								'url': answer_list['url']
+							},
+							'keyboard':{
+								'type':'text'
+							}
+						})
+			else:
+				return JsonResponse({
+							'message':{
+								"user_key": "encryptedUserKey",
+								'text': answer
+							},
+							'keyboard':{
+								'type':'text'
+							}
+						})
 		else:
 			return JsonResponse({
 						'message':{
