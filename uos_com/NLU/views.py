@@ -116,7 +116,7 @@ def MA(input):
 
 		# 예외
 		else:
-			answer_list = [-1]
+			answer_list = [None, None, None, None, None]
 
 
 	finally:
