@@ -14,7 +14,7 @@ browser = None
 def getInput(input):
 	return 0
 
-def MA(input):
+def MA(input,call):
 	global display, browser
 	try:
 
@@ -24,7 +24,10 @@ def MA(input):
 		browser.implicitly_wait(3)
 
 		answer_list = {}
-		input = unquote(input)
+		if call == 1:
+			input = unquote(input)
+		else:
+			pass
 		input = input.upper()
 		komoran = Komoran()
 		nouns_list = komoran.nouns(input)

@@ -6,7 +6,7 @@ def index(request):
 	return 0
 
 def getInput(request,input):
-	answer_list = MA(input)
+	answer_list = MA(input,1)
 	if 'action' in answer_list:
 		# answer_list = {'action':action, 'company':company, 'who':who, 'res':str(res), 'url':url}
 		# 	# if company == None and res > 0:
