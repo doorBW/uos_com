@@ -21,7 +21,7 @@ def MA(input):
 		display = Display(visible=0, size=(1024,768))
 		display.start()
 		browser = webdriver.Chrome()
-		browser.implicitly_wait(3)
+		browser.implicitly_wait(2)
 
 		answer_list = {}
 		input = unquote(input)
