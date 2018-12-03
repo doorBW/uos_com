@@ -136,7 +136,7 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 	if action == 1:
 		res = 0
 		company_list = soup.select('tbody > tr > td.companyName')
-		who_list = soup.select('tbody > tf > td > span.applyAs')
+		who_list = soup.select('tbody > tr > td > span.applyAs')
 		# 회사별, who별로 나눠야함
 		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
 			for company,idx in enumerate(company_list):
@@ -152,7 +152,7 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 				if (key2 in who) or ('무관' in who):
 					res += 1
 		else:
-			res = len(company_list)
+			res = len(company_list) - 1
 			
 #LtableJobNoticesList > tbody > tr:nth-child(2) > td:nth-child(2) > span
 	return res
