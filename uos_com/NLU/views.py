@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from django.shortcuts import render
-from konlpy.tag import Komoran
+from konlpy.tag import Mecab
 from imp import reload
 from urllib.parse import unquote
 from selenium import webdriver
@@ -15,27 +15,27 @@ def getInput(input):
 	return 0
 
 def MA(input):
-	global display, browser
+	# global display, browser
 	try:
 
-		# display = Display(visible=0, size=(1024,768))
-		# display.start()
+		display = Display(visible=0, size=(1024,768))
+		display.start()
 		browser = webdriver.Chrome()
 		browser.implicitly_wait(1)
 
 		answer_list = {}
 		input = unquote(input)
 		input = input.upper()
-		komoran = Komoran()
-		nouns_list = komoran.nouns(input)
+		mecab = Mecab()
+		morphs_list = mecab.morphs(input)
 
 		# answer = '형태소분석결과:'
-		new_nouns_list = []
-		for i in nouns_list:
+		new_morphs_list = []
+		for i in morphs_list:
 			# answer += i
 			i = i.upper()
 			i = i.replace(' ','')
-			new_nouns_list.append(i)
+			new_morphs_list.append(i)
 			# answer +=' '
 		# answer += '//'
 
@@ -122,7 +122,7 @@ def MA(input):
 
 
 	finally:
-		# display.stop()
+		display.stop()
 		browser.quit()
 	
 	return answer_list
