@@ -44,7 +44,7 @@ def MA(input):
 		url = None
 		action = 0
 		# 키워드 추가
-		for noun in new_nouns_list:
+		for noun in new_morphs_list:
 			# answer += noun
 			# 액션 설정
 			if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
