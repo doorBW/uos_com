@@ -38,12 +38,13 @@ def getMessage(request):
 			answer = '해당 기능은 준비중 입니다.'
 		else:
 			answer_list = MA(input)
+			# answer_list = [action, company, who, str(res), url]
 			if answer_list[0] == 1:
 				if answer_list[1] == None and int(answer_list[3]) > 0:
 					answer = '네, 현재 '+answer_list[2]+'채용공고가 '+answer_list[3]+'개 있습니다. \n'
 				elif int(answer_list[3]) > 0:
 					answer = '네, 현재 '+answer_list[1]+'에 대한 '+answer_list[2]+'채용공고가 '+answer_list[3]+'개 있습니다. \n'
-				elif company == None:
+				elif answer_list[1] == None:
 					answer = '현재 '+answer_list[2]+'채용공고가 없습니다. \n'
 				else:
 					answer = '현재 '+answer_list[1]+'에 대한 '+answer_list[2]+'채용공고가 없습니다. \n'
