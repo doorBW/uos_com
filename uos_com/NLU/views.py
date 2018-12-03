@@ -17,12 +17,13 @@ def getInput(input):
 def MA(input):
 	global display, browser
 	try:
+
 		display = Display(visible=0, size=(1024,768))
 		display.start()
 		browser = webdriver.Chrome()
 		browser.implicitly_wait(3)
 
-		answer = ''
+		answer_list = []
 		input = unquote(input)
 		input = input.upper()
 		komoran = Komoran()
@@ -40,6 +41,7 @@ def MA(input):
 
 		company = None
 		who = None
+		url = None
 		action = 0
 		# 키워드 추가
 		for noun in new_nouns_list:
@@ -72,31 +74,36 @@ def MA(input):
 			if who == None:
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi',company,who)
 				# answer += '전체검색결과: '
-				who = ''
+				url = 'http://careers.lg.com/app/job/RetrieveJobNotices.rpi'
 			elif who == '신입':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
 				# answer += '신입검색결과: '
 				who += ' '
+				url = 'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A'
 			elif who == '경력':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=B',company,who)
 				# answer += '경력검색결과: '
 				who += ' '
+				url = 'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=B'
 			elif who == '인턴':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=C',company,who)
 				# answer += '인턴검색결과: '
 				who += ' '
+				url = 'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=C'
 			else:
 				res = 0
 				# answer += '이건뭐냐: '
 				answer += who
-			if company == None and res > 0:
-				answer += '네, 현재 '+who+'채용공고가 '+str(res)+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
-			elif res > 0:
-				answer += '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+str(res)+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
-			elif company == None:
-				answer += '현재 '+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
-			else:
-				answer += '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">\>\>채용공고확인하기\<\<</a><br>'
+
+			answer_list = [action, company, who, str(res), url]
+			# if company == None and res > 0:
+			# 	answer += '네, 현재 '+who+'채용공고가 '+str(res)+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">>>채용공고확인하기<<</a><br>'
+			# elif res > 0:
+			# 	answer += '네, 현재 '+company+'에 대한 '+who+'채용공고가 '+str(res)+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">>>채용공고확인하기<<</a><br>'
+			# elif company == None:
+			# 	answer += '현재 '+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">>>채용공고확인하기<<</a><br>'
+			# else:
+			# 	answer += '현재 '+company+'에 대한'+who+'채용공고가 없습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">>>채용공고확인하기<<</a><br>'
 		# 채용공고
 		# 1개이상: 네, 현재 LG CNS에 대한 n개의 공고가 있습니다. >>링크에서확인하기
 
@@ -108,13 +115,15 @@ def MA(input):
 		# 기타프로그램
 
 		# 예외
-		answer += '/답변 끝'
+		else:
+			answer_list = [-1]
+
 
 	finally:
 		display.stop()
 		browser.quit()
 	
-	return answer
+	return answer_list
 
 def crawl(action, url, key1=None, key2=None, key3=None):
 	global display, browser
