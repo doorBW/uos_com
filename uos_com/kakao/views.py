@@ -45,7 +45,7 @@ def getMessage(request):
 						answer = '네, 현재 '+answer_list['who']+'채용공고가 '+answer_list['res']+'개 있습니다. \n'
 					elif int(answer_list['res']) > 0:
 						answer = '네, 현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 '+answer_list['res']+'개 있습니다. \n'
-					elif 'company' not in answer_list[]:
+					elif 'company' not in answer_list:
 						answer = '현재 '+answer_list['who']+'채용공고가 없습니다. \n'
 					else:
 						answer = '현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 없습니다. \n'
