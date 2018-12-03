@@ -30,7 +30,7 @@ def getMessage(request):
 		message_type = jsonMessage['type']
 		content = jsonMessage['content']
 		answer = ''
-		answer_list = [None, None, None, None, None]
+		answer_list = {}
 		if content == (chr(0x2753)+' 어떤 기능이 있나요?'):
 			answer = '현재 다음과 같은 기능을 제공하고 있어요 :)< \n1. 채용공고 안내 \n예시) LG CNS 신입 채용공고 있어?'
 		elif content == (chr(0x2753)+' 대화 시작할래요!'):

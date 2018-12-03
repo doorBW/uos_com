@@ -74,7 +74,9 @@ def MA(input):
 			if who == None:
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi',company,who)
 				# answer += '전체검색결과: '
+				who = ' '
 				url = 'http://careers.lg.com/app/job/RetrieveJobNotices.rpi'
+
 			elif who == '신입':
 				res = crawl(action,'http://careers.lg.com/app/job/RetrieveJobNotices.rpi?careerCode=A',company,who)
 				# answer += '신입검색결과: '
