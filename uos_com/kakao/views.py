@@ -29,8 +29,6 @@ def getMessage(request):
 		user_key = jsonMessage['user_key']
 		message_type = jsonMessage['type']
 		content = jsonMessage['content']
-		answer = '사용자 입력:'
-		answer += content
 		if content == (chr(0x2753)+' 어떤 기능이 있나요?'):
 			answer = ''
 		elif content == (chr(0x2753)+' 대화 시작할래요!'):
@@ -39,7 +37,7 @@ def getMessage(request):
 			answer = ''
 		else:
 			answer_list = MA(input)
-			if answer_list[0] == 1
+			if answer_list[0] == 1:
 				if answer_list[1] == None and int(answer_list[3]) > 0:
 					answer = '네, 현재 '+answer_list[2]+'채용공고가 '+answer_list[3]+'개 있습니다.\\n'
 				elif int(answer_list[3]) > 0:
