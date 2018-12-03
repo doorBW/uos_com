@@ -18,10 +18,10 @@ def MA(input):
 	global display, browser
 	try:
 
-		display = Display(visible=0, size=(1024,768))
-		display.start()
+		# display = Display(visible=0, size=(1024,768))
+		# display.start()
 		browser = webdriver.Chrome()
-		browser.implicitly_wait(2)
+		browser.implicitly_wait(1)
 
 		answer_list = {}
 		input = unquote(input)
@@ -122,7 +122,7 @@ def MA(input):
 
 
 	finally:
-		display.stop()
+		# display.stop()
 		browser.quit()
 	
 	return answer_list
