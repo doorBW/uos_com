@@ -23,7 +23,7 @@ def MA(input):
 		browser = webdriver.Chrome()
 		browser.implicitly_wait(3)
 
-		answer_list = []
+		answer_list = {}
 		input = unquote(input)
 		input = input.upper()
 		komoran = Komoran()
@@ -95,7 +95,7 @@ def MA(input):
 				# answer += '이건뭐냐: '
 				answer += who
 
-			answer_list = [action, company, who, str(res), url]
+			answer_list = {'action':action, 'company':company, 'who':who, 'res':str(res), 'url':url}
 			# if company == None and res > 0:
 			# 	answer += '네, 현재 '+who+'채용공고가 '+str(res)+'개 있습니다.<br><br><a href="http://careers.lg.com/app/job/RetrieveJobNotices.rpi">>>채용공고확인하기<<</a><br>'
 			# elif res > 0:
@@ -116,7 +116,7 @@ def MA(input):
 
 		# 예외
 		else:
-			answer_list = [None, None, None, None, None]
+			answer_list = {}
 
 
 	finally:
