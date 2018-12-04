@@ -193,7 +193,7 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 		who_list = soup.select('tbody > tr > td > span.applyAs')
 		# 회사별, who별로 나눠야함
 		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
-			for company,idx in enumerate(company_list):
+			for idx,company in enumerate(company_list):
 				if key1 in company.text:
 					if (key2 in who_list[idx].text) or ('무관' in who_list[idx].text):
 						res += 1
