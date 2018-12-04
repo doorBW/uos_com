@@ -33,8 +33,14 @@ def getMessage(request):
 		answer_list = {}
 		if content == (chr(0x2753)+' 어떤 기능이 있나요?'):
 			answer = '현재 다음과 같은 기능을 제공하고 있어요 :-) \n1. 채용공고 안내 \n예시) LG CNS 신입 채용공고 있어? \n2. 채용절차 안내 \n예시) 신입 채용절차가 어떻게 돼? \n3. 채용문의 \n예시) 자주묻는질문은 뭐가 있어?'
-		elif content == (chr(0x2753)+' 대화 시작할래요!'):
+		elif content == (chr(0x2753)+' 기능 이용할래요!'):
 			answer = '네. 원하시는 기능을 말씀해주세요. \n(채용공고안내, 채용절차안내, 채용문의에 대한 기능이 제공되고 있습니다.)'
+			return JsonResponse({
+						'message':{
+							"user_key": "encryptedUserKey",
+							'text': answer
+						}
+					})
 		elif content == (chr(0x2753)+' 문의할게 있어요.'):
 			answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( \n 자주묻는질문은 아래 버튼을 눌러서 확인해보세요!'
 		else:

@@ -30,7 +30,7 @@ def getInput(request,input):
 		elif answer_list['action'] == 0:
 			answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-( <br>저는 아직 LG채용 관련 내용만 답변드릴 수 있어요. <br>오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
 		else:
-			answer = '???'
+			answer = '????ㅇㅅㅇ????'
 	else:
 		answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-(<br>저는 아직 LG채용 관련 내용만 답변드릴 수 있어요.<br>오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
 	return HttpResponse(answer)
