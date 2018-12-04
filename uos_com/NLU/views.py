@@ -50,7 +50,7 @@ def MA(input):
 			if action == None:
 				if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
 					action = 1
-				elif (noun=='채용절차')or(noun=='절차')or(noun=='채용순서')or(noun=='방법'):# 채용절차
+				elif (noun=='채용절차')or(noun=='절차')or(noun=='채용순서')or(noun=='방법')or(noun=='순서'):# 채용절차
 					action = 2
 				elif (noun=='채용문의')or(noun=='문의')or(noun=='질문')or(noun=='개선점')or(noun=='챗봇개선점'):# 채용문의
 					action = 3
