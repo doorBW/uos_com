@@ -157,6 +157,13 @@ def MA(input):
 				url = 'http://careers.lg.com/app/careers/ViewExperienced.rpi'
 
 			else:
+				who = ''
+				process = 'LG그룹은 각 사별 인재상을 기준으로 차별화된 채용 프로그램 및 기준에 의해 우수 인재를 선발합니다. \n\
+				지원자의 과도한 개인정보를 받지 않으며, 전형상 불필요한 항목을 과감히 삭제하였습니다. \n\
+				또한, 각 계열사마다 상이했던 입사지원서를 통일함으로써 사별 중복지원을 한다면 "입사지원서 불러오기"기능으로 보다 편리하게 지원이 가능합니다. \n\
+				최대 3개의 중복지원이 가능하며, 중복지원시에 인적성검사는 한번만 치루시면 됩니다. \n\
+				아래 버튼을 통해 관련 내용을 더 상세히 확인하실 수 있으며, 모집단위별 채용절차가 궁금하실때는 인턴/신입/경력 키워드를 넣어서 다시 질문해주세요.'
+				url = 'http://careers.lg.com/app/careers/ViewSystem.rpi?requestMenuId=1441'
 			answer_list = {'action':action, 'who':who, 'url':url, 'process':process}
 		# 채용문의
 		elif action == 3:
