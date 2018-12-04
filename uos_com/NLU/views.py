@@ -42,19 +42,20 @@ def MA(input):
 		who = None
 		url = None
 		process = None
-		action = 0
+		action = None
 		# 키워드 추가
 		for noun in new_morphs_list:
 			# answer += noun
 			# 액션 설정
-			if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
-				action = 1
-			elif (noun=='채용절차')or(noun=='절차')or(noun=='채용순서')or(noun=='방법'):# 채용절차
-				action = 2
-			elif (noun=='채용문의')or(noun=='문의')or(noun=='질문')or(noun=='개선점')or(noun=='챗봇개선점'):# 채용문의
-				action = 3
-			else:
-				action = 0
+			if action == None:
+				if (noun=='채용공고')or(noun=='공고')or(noun=='일자리')or(noun=='자리'):# 채용공고
+					action = 1
+				elif (noun=='채용절차')or(noun=='절차')or(noun=='채용순서')or(noun=='방법'):# 채용절차
+					action = 2
+				elif (noun=='채용문의')or(noun=='문의')or(noun=='질문')or(noun=='개선점')or(noun=='챗봇개선점'):# 채용문의
+					action = 3
+				else:
+					action = None
 			# 채용공고:회사
 			if (noun=='LGCNS')or(noun=='CNS')or(noun=='씨엔에스')or\
 				(noun=='LG전자')or(noun=='전자')or\
@@ -72,7 +73,7 @@ def MA(input):
 			if (noun=='신입')or(noun=='경력')or(noun=='인턴'):
 				who = noun
 
-
+		if action == None: action = 0
 
 
 		# 채용공고 크롤링 처리
