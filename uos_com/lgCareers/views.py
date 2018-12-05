@@ -14,11 +14,11 @@ def getInput(request,input):
 		# action = 0: 예외 처리
 		if answer_list['action'] == 1:
 
-			if 'company' not in answer_list and int(answer_list['res']) > 0:
+			if answer_list['company'] == None and int(answer_list['res']) > 0:
 				answer = '네, 현재 '+answer_list['who']+'채용공고가 '+answer_list['res']+'개 있습니다.<br><br><a href="'+answer_list['url']+'">>>채용공고확인하기<<</a><br>'
 			elif int(answer_list['res']) > 0:
 				answer = '네, 현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 '+answer_list['res']+'개 있습니다.<br><br><a href="'+answer_list['url']+'">>>채용공고확인하기<<</a><br>'
-			elif 'company' not in answer_list:
+			elif answer_list['company'] == None:
 				answer = '현재 '+answer_list['who']+'채용공고가 없습니다.<br><br><a href="'+answer_list['url']+'">>>채용공고확인하기<<</a><br>'
 			else:
 				answer = '현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 없습니다.<br><br><a href="'+answer_list['res']+'">>>채용공고확인하기<<</a><br>'
