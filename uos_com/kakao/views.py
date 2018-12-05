@@ -43,6 +43,16 @@ def getMessage(request):
 					})
 		elif content == (chr(0x2753)+' 문의할게 있어요.'):
 			answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( \n 자주묻는질문은 아래 버튼을 눌러서 확인해보세요!'
+			return JsonResponse({
+						'message':{
+							"user_key": "encryptedUserKey",
+							'text': answer,
+							'message_button':{
+								'label': '공식홈에서 확인하기',
+								'url': 'http://careers.lg.com/app/faq/RetrieveFaq.rpi?requestMenuId=1069'
+							}
+						}
+					})
 		else:
 			answer_list = MA(content)
 			# answer_list = {'action':action, 'company':company, 'who':who, 'res':str(res), 'url':url}
@@ -65,11 +75,11 @@ def getMessage(request):
 				elif answer_list['action'] == 3:
 					answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( \n 자주묻는질문은 아래 버튼을 눌러서 확인해보세요!'
 				elif answer_list['action'] == 0:
-					answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-( \n저는 아직 LG채용 관련 내용만 답변드릴 수 있어요. \n오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
+					answer = '미안해요. \n무슨 말씀이신지 이해하지 못했어요 :-( \n저는 아직 LG채용 관련 내용만 답변드릴 수 있습니다. \n오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
 				else:
 					answer = '????ㅇㅅㅇ????'
 			else:
-				answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-( \n저는 아직 LG채용 관련 내용만 답변드릴 수 있어요. \n오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
+				answer = '미안해요. \n무슨 말씀이신지 이해하지 못했어요 :-( \n저는 아직 LG채용 관련 내용만 답변드릴 수 있습니다. \n오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
 
 		if 'url' in answer_list:
 			if answer_list['url'] != None:
