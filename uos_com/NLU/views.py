@@ -195,7 +195,7 @@ def crawl(action, url, key1=None, key2=None, key3=None):
 		if (key1 != None and key2 != None): # 회사, 지원방법 받았을 때
 			for idx,company in enumerate(company_list):
 				if key1 in company.text:
-					if (key2 in who_list[idx].text) or ('무관' in who_list[idx].text):
+					if (key2 in who_list[idx-1].text) or ('무관' in who_list[idx-1].text):
 						res += 1
 		elif key1 != None:
 			for company in company_list:
