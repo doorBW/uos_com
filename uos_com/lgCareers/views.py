@@ -21,12 +21,12 @@ def getInput(request,input):
 			elif answer_list['company'] == None:
 				answer = '현재 '+answer_list['who']+'채용공고가 없습니다.<br><br><a href="'+answer_list['url']+'">>>채용공고확인하기<<</a><br>'
 			else:
-				answer = '현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 없습니다.<br><br><a href="'+answer_list['res']+'">>>채용공고확인하기<<</a><br>'
+				answer = '현재 '+answer_list['company']+'에 대한 '+answer_list['who']+'채용공고가 없습니다.<br><br><a href="'+answer_list['url']+'">>>채용공고확인하기<<</a><br>'
 		elif answer_list['action'] == 2:
 			answer_list['process'] = answer_list['process'].replace('\n','<br>')
-			answer = answer_list['process']
+			answer = answer_list['process']+'<br><br><a href="'+answer_list['url']+'">>>채용절차확인하기<<</a><br>'
 		elif answer_list['action'] == 3:
-			answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( <br>자주묻는질문은 아래 버튼을 눌러서 확인해보세요!'
+			answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( <br>자주묻는질문은 아래 버튼을 눌러서 확인해보세요!<br><br><a href="'+answer_list['url']+'">>>자주묻는질문<<</a><br>'
 		elif answer_list['action'] == 0:
 			answer = '미안해요. 무슨 말씀이신지 이해하지 못하겠어요 :-( <br>저는 아직 LG채용 관련 내용만 답변드릴 수 있어요. <br>오탈자나 띄어쓰기를 확인해주시고 다시 말씀해주세요.'
 		else:
