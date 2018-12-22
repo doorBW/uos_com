@@ -20,7 +20,7 @@ def MA(input):
 		display = Display(visible=0, size=(1024,768))
 		display.start()
 		browser = webdriver.Chrome()
-		browser.implicitly_wait(2)
+		browser.implicitly_wait(1.5)
 
 		answer_list = {}
 		input = unquote(input)
@@ -224,3 +224,5 @@ def displayStop(request):
 	display.stop()
 	browser.quit()
 	return HttpResponse('display stop')
+
+
