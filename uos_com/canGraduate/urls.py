@@ -19,5 +19,6 @@ urlpatterns = [
     path('', views.index),
     path('canI',views.canI),
     path('checking_graduataion',views.checking_graduataion),
-    path('error/', views.error_page)
+    path('error/', views.error_page),
+    path('temp',views.temp)
 ]

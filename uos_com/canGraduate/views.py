@@ -296,3 +296,7 @@ def checking_graduataion(request):
     except:
         return redirect(home_url+'/error')
     return render(request, 'canGraduate/canI_result.html', result_message)
+
+
+def temp(request):
+    return HttpResponse('temp site OK')
