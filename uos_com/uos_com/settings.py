@@ -38,6 +38,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '.ap-northeast-2.compute.amazonaws.com',
     '.uos-info.com',
+    'uos-info.doorbw.com',
+    '13.125.253.77'
 ]
 # scp -i /Users/doorbw/Desktop/Beomwoo/uos_com/server/uos_com_key.pem -r django ubuntu@ec2-52-79-241-160.ap-northeast-2.compute.amazonaws.com:/srv/ 
 
