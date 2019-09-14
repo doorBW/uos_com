@@ -5,6 +5,18 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt    #포스트 에러 방지
 from NLU.views import MA
 
+#load env
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+# Create .env file path.
+dotenv_path = join(dirname(__file__), '.env')
+# Load file from the path.
+load_dotenv(dotenv_path)
+
+user_key = os.getenv('userKey')
+
 # Create your views here.
 def index(requset):
 	return 0
@@ -37,7 +49,7 @@ def getMessage(request):
 			answer = '네. 원하시는 기능을 말씀해주세요. \n(채용공고안내, 채용절차안내, 채용문의에 대한 기능이 제공되고 있습니다.)'
 			return JsonResponse({
 						'message':{
-							"user_key": "encryptedUserKey",
+							"user_key": user_key,
 							'text': answer
 						}
 					})
@@ -45,7 +57,7 @@ def getMessage(request):
 			answer = '현재 1:1질문은 로그인상태에서만 가능합니다 :-( \n 자주묻는질문은 아래 버튼을 눌러서 확인해보세요!'
 			return JsonResponse({
 						'message':{
-							"user_key": "encryptedUserKey",
+							"user_key": user_key,
 							'text': answer,
 							'message_button':{
 								'label': '공식홈에서 확인하기',

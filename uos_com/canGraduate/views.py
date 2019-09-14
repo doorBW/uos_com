@@ -4,8 +4,18 @@ import requests, json
 import xmltodict
 from django.views.decorators.csrf import csrf_exempt
 
-apiKey = '201809507OAM40045'
-home_url = 'http://uos-info.com'
+#load env
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+# Create .env file path.
+dotenv_path = join(dirname(__file__), '.env')
+# Load file from the path.
+load_dotenv(dotenv_path)
+
+apiKey = os.getenv('apiKey')
+home_url = 'http://uos-info.doorbw.com'
 
 # Create your views here.
 def index(request):
