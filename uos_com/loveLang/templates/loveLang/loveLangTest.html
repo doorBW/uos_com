@@ -1,0 +1,144 @@
+{% load static %}
+<!doctype html>
+<html lang = "ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>사랑의 언어</title>
+
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css_v1.css' %}">
+    <style>
+    .header{
+        margin-top:1%;
+        height:5rem;
+    }
+    .dohyeon{
+        font-family: 'Do Hyeon', sans-serif;
+    }
+    .question-div{
+        font-size:1.3em;
+        text-align: center;
+        margin-bottom:10%;
+    }
+    .example-div{
+        font-size:1.3em;
+    }
+    
+    </style>
+    <script>
+        var questions = {{ questions|safe }}
+        var question_value = {{ question_value|safe }}
+        var question_num = 0
+        var answer_list = [0,0,0,0,0]
+        var exam_group = $('#exam_group')
+        
+        function init(){
+            $('#exam_group').empty();
+            $('#exam_group').html(
+                "<button id='left_exam' type='button' class='btn btn-default col-xs-6' style='white-space : normal;' value='"+question_value[question_num][0]+"' onclick='exam_click(this)'>"+questions[question_num][0]+"</button>\
+                <button id='right_exam' type='button' class='btn btn-default col-xs-6' style='white-space : normal;' value='"+question_value[question_num][1]+"' onclick='exam_click(this)'>"+questions[question_num][1]+"</button>"
+            );   
+        }
+
+        function exam_click(item){
+            //console.log(item.value,question_num)
+            if(item.value == 'A'){
+                answer_list[0] += 1
+            }else if(item.value == 'B'){
+                answer_list[1] += 1
+            }else if(item.value == 'C'){
+                answer_list[2] += 1
+            }else if(item.value == 'D'){
+                answer_list[3] += 1
+            }else if(item.value == 'E'){
+                answer_list[4] += 1
+            }
+            $('#exam_group').empty();
+
+            if (question_num == 4){
+                var result = "<h4>당신의 '사랑의언어' 결과는 아래와 같습니다!</h4>";
+                var rank = 1
+                console.log(answer_list)
+
+                var max_num = Math.max.apply(null, answer_list);
+                while(max_num != -1){
+                    for(var i=0; i<5; i++){
+                        if(answer_list[i] == max_num){
+                            if(i==0){
+                                result += "<h3 style='color:red;'>"+rank+"위: A 인정하는 말<br>(상대에 대한 칭찬, 격려)</h3>\
+                                <h4 style='word-break:keep-all; font-family:\"Sunflower\", sans-serif;'><span style='background-color: rgb(213, 213, 213); font-weight:bold;'>행동보다 말을 중요하게 여기는 타입.</span><br>\
+                                이 사랑의 언어를 가진 사람은 상대방의 자발적인 칭찬의 감격한다. '사랑해'라는 말을 듣는 것이 중요하고, 사랑하는 이유에 대해 설명을 들으면 기분이 하늘을 나는 것 같은 반면에, 모욕하는 말을 들으면 견딜 수 없고 쉽게 잊혀지지 않는다.<br>모든 사람이 인정하는 말을 좋아하나, 특히 자신의 사랑의 언어가 '인정하는 말'이라면 상대방이 상처주는 말에 더 크게 상심하고 아파할 수 있다.</h4>";
+                                answer_list[i] = -1
+                            }else if(i==1){
+                                result += "<h3 style='color:red;'>"+rank+"위: B 함께 하는 시간<br>(진정한 대화, 취미활동 공유)</h3>\
+                                <h4 style='word-break:keep-all; font-family:\"Sunflower\", sans-serif;'><span style='background-color: rgb(213, 213, 213); font-weight:bold;'>상대방에게 집중하여 서로 있는 시간을 많이 가져야 사랑받는다고 느끼는 타입.</span><br>\
+                                함께하는 시간을 공유하지 못할 때 더더욱 애정결핍을 느끼는 사람들이 있다. 완전히 집중해 주는 것을 최고의 사랑으로 여기는 사람이다.<br>이 타입의 사람에게는 함께 있어주는 것이 중요하다. 그러나 진정으로 함께하는 것이란 TV를 끄고, 수저를 내려놓고, 다른 잡일을 미뤄 놓는 것을 의미한다. 대화하면서 다른 일을 하거나, 약속을 미루거나, 경청하지 않는 것은 심한 상처가 될 수 있다. 대화에서 충고를 얻기보다 자신의 감정을 이해받기를 원한다.</h4>";
+                                answer_list[i] = -1
+                            }else if(i==2){
+                                result += "<h3 style='color:red;'>"+rank+"위: C 선물<br>(가장 배우기 쉬운 사랑의 언어)</h3>\
+                                <h4 style='word-break:keep-all; font-family:\"Sunflower\", sans-serif;'><span style='background-color: rgb(213, 213, 213); font-weight:bold;'>상징적 의미를 지닌 물건을 통해 사랑을 확인받는 타입.</span><br>\
+                                상대방이 준 선물을 특별하게 기억하고 간직하는 사람들은 '선물'이 사랑의 언어일 확률이 높다.<br>이 사랑의 언어를 물질주의 속물근성과 혼동해서는 안된다.<br>이 사람은 선물에 담겨있는 사랑과 사려 깊음과 노력을 소중히 여긴다. 이 사람에게 선물은 '당신을 소중하게 여기고 배려한다.'는 의미이다.<br>그렇게 때문에 생일이나 결혼기념일을 잊거나 성의 없이 마련한 선물은 큰 상처가 된다. 문화를 초월하여 사랑을 전하는데 선물을 주고 받는 일이 매우 중요하다. 선물은 상징에 불과하고 선물을 준 사람과 그때의 느낌은 오래 기억된다. 마음이 중요하다고 생각하여 선물하지 않으면 나중에는 마음까지 멀어지고만다. 선물은 사랑과 정성이 깃든 것이면 무엇이든지 좋으며 상대가 원하는 것이면 더더욱 좋다.</h4>";
+                                answer_list[i] = -1
+                            }else if(i==3){
+                                result += "<h3 style='color:red;'>"+rank+"위: D 봉사<br>(원하는 것 몸으로 봉사해주기)</h3>\
+                                <h4 style='word-break:keep-all; font-family:\"Sunflower\", sans-serif;'><span style='background-color: rgb(213, 213, 213); font-weight:bold;'>파트너가 원하는 것을 해주는 것에 사랑받는다고 느끼는 타입.</span><br>\
+                                요리, 식탁정리, 설거지, 청소, 옷장정리, 거울닦기 등 노력과 수고가 필요한 일이다. 여기에서 의무적이거나 억지로 하는 봉사는 해당되지 않는다. 방 청소를 해주는 일이 사랑의 표현일 수 있다. 이 사람의 짐을 덜어 주기 위해 하는 일은 어떤 것이든지 큰 의미로 다가갈 수 있다.<br>이 사람이 가장 원하는 것은 '당신을 위해 이걸 해주겠소.'이다. 게으름, 약속위반 등은 이 언어를 사용하는 사람들에게 심각한 사건이다.<br>상대를 도와줌으로써 기쁘게 하고, 무엇인가를 함으로써 당신의 사랑을 표현하는 것을 말한다.</h4>";
+                                answer_list[i] = -1
+                            }else if(i==4){
+                                result += "<h3 style='color:red;'>"+rank+"위: E 스킨쉽<br>(신체접촉을 통한 교감 증대)</h3>\
+                                <h4 style='word-break:keep-all; font-family:\"Sunflower\", sans-serif;'><span style='background-color: rgb(213, 213, 213); font-weight:bold;'>신체접촉을 통해서 사랑받는다고 느끼는 타입.</span><br>\
+                                이 언어는 침실에 관한 것만이 아니다. 이 언어를 가진 사람은 자신도 사람들을 잘 만진다. 포옹, 등 두드리기, 손잡기, 어깨나 팔, 얼굴 등을 만지는 것을 통해 자신의 감정을 표현한다. 반대로 이런 것을 소홀히 하거나 남용하는 행위는 용서할 수 없는 파괴적인 행위이다.<br>이 타입이 사랑의 언어가 아닌 사람들은 스킨쉽을 유난히 피할 수 있다.<br>아동 발달 과정을 연구한 많은 보고서에 따르면, 육체적인 접촉을 전혀갖지 않고 지낸 아이들보다 안아주거나, 키스를 해 준 아이들이 훨씬 건강하게 자란다고 한다. 부부간에도 손을 잡아주거나, 키스를 하거나, 껴안거나, 관계를 갖는 것은 배우자에게 사랑을 전달하는 매우 중요한 수단이다.</h4>";
+                                answer_list[i] = -1
+                            }
+                        }
+                    }
+                    rank += 1
+                    max_num = Math.max.apply(null, answer_list);
+                }
+                
+                
+                
+                console.log(result)
+                $('#question').empty();
+                $('#question').html(result);
+
+            }else{
+                question_num += 1
+                $('#exam_group').html(
+                    "<button id='left_exam' type='button' class='btn btn-default col-xs-6' style='white-space : normal;' value='"+question_value[question_num][0]+"' onclick='exam_click(this)'>"+questions[question_num][0]+"</button>\
+                    <button id='right_exam' type='button' class='btn btn-default col-xs-6' style='white-space : normal;' value='"+question_value[question_num][1]+"' onclick='exam_click(this)'>"+questions[question_num][1]+"</button>"
+                );    
+            }
+            
+
+        }
+    </script>
+</head>
+<body class='container' onload='init()'>
+    <header class='header dohyeon'>
+        <div class='test-header'>
+            <h1 style='font-size:3.2rem;'>5가지 사랑의 언어 테스트</h1>
+        </div>
+    </header>
+    <main class='main dohyeon'>
+        <div id='question' class='question-div'>
+            아래 두가지 선택지 중에서<br>상대(친구, 이성, 가족 등)를 생각하며<br><span style='color:blue;'>당신이 보다 선호하는 문장</span>을 선택하세요.
+        </div>
+        <div id='exam_group' class="example-div row" role="group">
+            <button id='left_exam' type="button" class="btn btn-default col-xs-6" value='left_init' onclick='exam_click(this)'>left</button>
+            <button id='right_exam' type="button" class="btn btn-default col-xs-6" value='right_init' onclick='exam_click(this)'>right</button>
+        </div>
+
+    </main>
+    <footer>
+    </footer>
+</body>

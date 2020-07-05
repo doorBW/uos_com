@@ -32,7 +32,7 @@ RAVEN_CONFIG = {
 SECRET_KEY = 'evk^zd-3&85vk(^o$zbl3n%3#5dw)*l*&87bk^7^!^jo50onkr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -52,12 +52,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'raven.contrib.django.raven_compat',
     'canGraduate',
     'kakao',
     'coursePlan',
     'NLU',
     'lgCareers',
-    'raven.contrib.django.raven_compat',
+    'loveLang',
 ]
 
 MIDDLEWARE = [

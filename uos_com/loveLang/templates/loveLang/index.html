@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang = "ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>사랑의 언어</title>
+
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/canGraduate_css_v1.css' %}">
+    <style>
+    .header{
+        margin-top:1%;
+        height:5rem;
+    }
+    .dohyeon{
+        font-family: 'Do Hyeon', sans-serif;
+    }
+    .test-btn-div{
+        margin-top:3rem;
+        text-align: center;
+    }
+    
+    </style>
+</head>
+<body class='container'>
+    <header class='header dohyeon'>
+        <div class='test-header'>
+            <h1 style='font-size:3.2rem;'>5가지 사랑의 언어 테스트</h1>
+        </div>
+    </header>
+    <main class='main dohyeon'>
+        <div class='test-explain'>
+            <h3 style='font-size:2rem;'>사람은 사랑받고, 사랑하길 원하는 욕구를 지녔다고 합니다.<br>이 욕구는 모든 사람의 근본적인 욕구라고 합니다.<br>
+            <span style='color:blue;'>인간관계 전문 상담가인 개리 채프먼은 이를 간단한 테스트를 통해 5가지 언어로 나누었습니다.</span></h3>
+            <h3 style='font-size:2rem;'>30가지 질문에 대한 테스트를 진행하여 당신의 사랑의 언어를 확인하실 수 있습니다.<br>
+            지금 바로 아래 <span style='color:blue;'>'테스트 시작하기'</span> 버튼을 눌러보세요!</h3>
+        </div>
+        <div class='test-btn-div'>
+            <a href='./loveLangTest'>
+                <button type="button" class="btn btn-default btn-lg">
+                    테스트 시작하기
+                </button>
+            </a>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
