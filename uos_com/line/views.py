@@ -1,0 +1,33 @@
+from django.shortcuts import render
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+from linebot.exceptions import LineBotApiError
+
+#load env
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+# Create .env file path.
+dotenv_path = join(dirname(__file__), '.env')
+# Load file from the path.
+load_dotenv(dotenv_path)
+
+channel_access_token = os.getenv('channel_access_token')
+line_bot_api = LineBotApi(channel_access_token)
+
+
+def webhook(request):
+    print(request)
+
+def broadcast(request):
+    try:
+        line_bot_api.broadcast(TextSendMessage(text='Hello World!'))
+    except LineBotApiError as e:
+        print(e)
+
+def broadcast_sise(request):
+    try:
+        line_bot_api.broadcast(TextSendMessage(text='Hello World!(TODO SISE)'))
+    except LineBotApiError as e:
+        print(e)

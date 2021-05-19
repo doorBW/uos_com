@@ -22,5 +22,6 @@ urlpatterns = [
     path('kakao/', include('kakao.urls')),
     path('lgcareersweb/',include('lgCareers.urls')),
     path('virtualdisplay/',include('NLU.urls')),
-    path('love-lang-test/',include('loveLang.urls'))
+    path('love-lang-test/',include('loveLang.urls')),
+    path('line/',include('line.urls'))
 ]
