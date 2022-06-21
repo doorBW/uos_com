@@ -7,7 +7,7 @@ EasyProcess==0.3
 idna==2.7
 JPype1==0.6.3
 konlpy==0.5.1
-numpy==1.15.1
+numpy==1.22.0
 pandas==0.23.4
 python-dateutil==2.7.3
 python-dotenv==0.10.3
